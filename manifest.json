@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "X Profile Redirect to All",
+  "version": "0.0.1",
+  "description": "Redirects X profile pages to their /all view without reloading the app.",
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*"],
+      "js": ["redirect.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ]
+}
