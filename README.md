@@ -8,8 +8,10 @@ URLs with an additional path after the username, such as `/with_replies`,
 are preserved during redirects.
 
 Navigation within X uses its client-side router, preserving timeline state and
-scroll position when you return from a profile. Direct visits from the address
-bar are handled before the profile page loads.
+scroll position when you return from a profile. After the profile renders, the
+extension selects X's own `All` menu item. If that control cannot be found, it
+leaves the normal profile visible. Direct visits from the address bar are
+handled before the profile page loads.
 
 ## Installation
 

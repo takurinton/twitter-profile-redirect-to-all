@@ -1,7 +1,7 @@
 "use strict";
 
 const assert = require("node:assert/strict");
-const { redirect } = require("./redirect.js");
+const { redirect, profileUsername, isAllLink } = require("./redirect.js");
 
 const cases = [
   ["https://x.com/example", "https://x.com/example/all"],
@@ -20,4 +20,14 @@ for (const [input, expected] of cases) {
   assert.equal(redirect(input), expected, input);
 }
 
-console.log(`${cases.length} tests passed`);
+assert.equal(profileUsername("https://x.com/Example"), "Example");
+assert.equal(profileUsername("https://x.com/Example/all"), null);
+assert.equal(profileUsername("https://x.com/home"), null);
+assert.equal(profileUsername("https://twitter.com/Example"), null);
+
+assert.equal(isAllLink("/Example/all", "Example"), true);
+assert.equal(isAllLink("https://x.com/example/all?lang=ja", "Example"), true);
+assert.equal(isAllLink("https://x.com/example", "Example"), false);
+assert.equal(isAllLink("https://example.com/Example/all", "Example"), false);
+
+console.log(`${cases.length + 8} tests passed`);
